@@ -30,15 +30,13 @@ Users can either **upload their travel documents** (flight tickets, hotel bookin
 - Generate a complete, personalized **day-by-day travel itinerary** with activities, timings, costs, and local tips
 - Store itineraries in the cloud and allow users to **share them publicly** via a unique link
 
-Built as part of a MERN + AI Full Stack Developer assignment to demonstrate end-to-end application development, AI integration, and production deployment skills.
-
 ---
 
 ## 🌐 Live Demo
 
 | Service | URL |
 |---|---|
-| 🌍 **Frontend (Vercel)** | [https://tripmind-ai.vercel.app](https://tripmind-ai.vercel.app) |
+| 🌍 **Frontend (Vercel)** | [https://trip-mind-ai-eight.vercel.app/](https://trip-mind-ai-eight.vercel.app/) |
 | ⚙️ **Backend API (Render)** | [https://tripmind-ai-server.onrender.com](https://tripmind-ai-server.onrender.com) |
 
 > **Note:** The backend is hosted on Render's free tier. The server may take **up to 60 seconds** to wake up on the first request after a period of inactivity. The frontend will notify you while it starts up.
@@ -105,20 +103,20 @@ Built as part of a MERN + AI Full Stack Developer assignment to demonstrate end-
 │                    SERVER (Render)                          │
 │               Node.js + Express.js                          │
 │                                                             │
-│  ┌─────────────┐  ┌──────────────┐  ┌──────────────────┐   │
-│  │ Auth Routes │  │ Itinerary    │  │  Upload Routes   │   │
-│  │  JWT/Bcrypt │  │ Routes       │  │  Multer + OCR    │   │
-│  └─────────────┘  └──────┬───────┘  └───────┬──────────┘   │
-│                           │                  │              │
-│                    ┌──────▼──────────────────▼──────┐      │
-│                    │       AI Service Layer           │      │
-│                    │   Google Gemini API Integration  │      │
-│                    └──────────────────────────────────┘      │
+│  ┌─────────────┐  ┌─────────────┐   ┌──────────────────┐    │
+│  │ Auth Routes │  │ Itinerary   │   │  Upload Routes   │    │
+│  │  JWT/Bcrypt │  │ Routes      │   │  Multer + OCR    │    │
+│  └─────────────┘  └─────┬───────┘   └───────┬──────────┘    │
+│                         │                   │               │
+│                   ┌─────▼───────────────────▼──────┐        │
+│                   │       AI Service Layer         │        │ 
+│                   │   Google Gemini API Integration│        │
+│                   └────────────────────────────────┘        │
 └──────────────────────────┬──────────────────────────────────┘
                            │ Mongoose ODM
                            ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                  DATABASE (MongoDB Atlas)                    │
+│                  DATABASE (MongoDB Atlas)                   │
 │               Users Collection + Itineraries Collection     │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -154,23 +152,23 @@ User Action
     │                    Extracted Raw Text
     │                               │
     │                    ┌──────────▼──────────┐
-    │                    │ Gemini: Validate     │
-    │                    │ Travel Document?     │
+    │                    │ Gemini: Validate    │
+    │                    │ Travel Document?    │
     │                    └──────────┬──────────┘
     │                               │ ✅ Yes
-    │                    ┌──────────▼──────────┐
+    │                    ┌──────────▼────────── ┐
     │                    │ Gemini: Parse Booking│
     │                    │ → Structured JSON    │
+    │                    └──────────┬────────── ┘
+    │                               │
+    │                    ┌──────────▼──────────┐
+    │                    │ Gemini: Generate    │
+    │                    │ Day-by-Day Itinerary│
     │                    └──────────┬──────────┘
     │                               │
     │                    ┌──────────▼──────────┐
-    │                    │ Gemini: Generate     │
-    │                    │ Day-by-Day Itinerary │
-    │                    └──────────┬──────────┘
-    │                               │
-    │                    ┌──────────▼──────────┐
-    │                    │  MongoDB Atlas       │
-    │                    │  Save Itinerary      │
+    │                    │  MongoDB Atlas      │
+    │                    │  Save Itinerary     │
     │                    └──────────┬──────────┘
     │                               │
     └──────── OR ──── Preferences Form
@@ -179,8 +177,8 @@ User Action
                            Budget, Style, Interests
                                     │
                            ┌────────▼────────┐
-                           │ Gemini: Generate │
-                           │ from Preferences │
+                           │ Gemini: Generate│
+                           │ from Preferences│
                            └────────┬────────┘
                                     │
                          User Views / Shares Itinerary
@@ -424,13 +422,13 @@ The Vite dev server is pre-configured to proxy `/api/*` requests to `http://loca
 
 | Page | Preview |
 |------|---------|
-| **Login** | *(screenshot placeholder)* |
-| **Register** | *(screenshot placeholder)* |
-| **Dashboard** | *(screenshot placeholder)* |
-| **Generate Itinerary (Form)** | *(screenshot placeholder)* |
-| **Upload Travel Document** | *(screenshot placeholder)* |
-| **Itinerary Detail View** | *(screenshot placeholder)* |
-| **Shared Itinerary (Public)** | *(screenshot placeholder)* |
+| **Login** | *![login page](image.png)* |
+| **Register** | *![register page](image-1.png)* |
+| **Dashboard** | *![dashboard page](image-2.png)* |
+| **Generate Itinerary (Form)** | *![form page](image-3.png)* |
+| **Upload Travel Document** | *![upload page](image-4.png)* |
+| **Itinerary Detail View** | *![detail page](image-5.png)* |
+| **Shared Itinerary (Public)** | *![public view](image-6.png)* |
 
 ---
 
